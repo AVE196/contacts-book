@@ -30,20 +30,20 @@ public class ContactService {
         }
     }
 
-    public void deleteContactByName(String name) {
+    public void deleteContactByName(String name, String phone) {
         if (uniqContacts.isEmpty()) System.out.println("Книга контактов пуста");
         else {
             Contact contactForDelete = null;
             Iterator<Contact> iterator = uniqContacts.iterator();
             while (iterator.hasNext()) {
                 Contact contact = iterator.next();
-                if (contact.getName().equalsIgnoreCase(name)) {
+                if (contact.getName().equalsIgnoreCase(name) && contact.getPhone().equals(phone)) {
                     contactForDelete = contact;
                     break;
                 }
             }
             if (contactForDelete == null) {
-                throw new NoSuchElementException(name);
+                throw new NoSuchElementException(name + " | " + phone);
             } else {
                 uniqContacts.remove(contactForDelete);
                 allContacts.remove(contactForDelete);

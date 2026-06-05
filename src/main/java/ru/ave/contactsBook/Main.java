@@ -46,7 +46,10 @@ public class Main {
                             break;
                         case 2:
                             System.out.print("Введите имя: ");
-                            service.deleteContactByName(readLine(scan));
+                            String nameDelete = readLine(scan);
+                            System.out.print("Введите телефон: ");
+                            String phoneDelete = readLine(scan);
+                            service.deleteContactByName(nameDelete, phoneDelete);
                             break;
                         case 3:
                             service.printAllContact();
